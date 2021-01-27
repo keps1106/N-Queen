@@ -6,37 +6,38 @@ package NQueen;
  */
 public class Service {
     public static void nQueens(int noOfQueens) {
-        int [] board = new int[noOfQueens];
+        //one row only have one Queen
+        int [] chessBoard = new int[noOfQueens];
         //start from board[0]
-        placeQueen(board, 0, noOfQueens);
+        placeQueen(chessBoard, 0, noOfQueens);
     }
 
-    private static boolean notConflict(int[] board, int currentColumnOfQueen) {
+    private static boolean notConflict(int[] chessBoard, int currentColumnOfQueen) {
         for (int i = 0; i < currentColumnOfQueen; i++) {
             //same row then false
-            if (board[i] == board[currentColumnOfQueen])
+            if (chessBoard[i] == chessBoard[currentColumnOfQueen])
                 return false;
 
             //same diagonal then false
-            if ((currentColumnOfQueen - i) == Math.abs(board[currentColumnOfQueen] - board[i])) {
+            if ((currentColumnOfQueen - i) == Math.abs(chessBoard[currentColumnOfQueen] - chessBoard[i])) {
                 return false;
             }
         }
         return true;
     }
 
-    private static void placeQueen(int[] board, int current, int noOfQueens) {
+    private static void placeQueen(int[] chessBoard, int current, int noOfQueens) {
         if (current == noOfQueens) {
-            //one row only have one Queen
-            displayQueens(board);
+            //if all queens are already be placed
+            displayQueens(chessBoard);
             return;
         }
 
         for (int i = 0; i < noOfQueens; i++) {
-            board[current] = i;
-            if (notConflict(board, current)) {
+            chessBoard[current] = i;
+            if (notConflict(chessBoard, current)) {
                 //if no conflict to others, place Queen in next row(current row+1)
-                placeQueen(board, current + 1, noOfQueens);
+                placeQueen(chessBoard, current + 1, noOfQueens);
             }
         }
     }
