@@ -5,6 +5,7 @@ package NQueen;
  * @date: 01/27/2021
  */
 public class Service {
+    private static int counter = 1;
     public static void nQueens(int noOfQueens) {
         //one row only have one Queen
         int [] chessBoard = new int[noOfQueens];
@@ -38,7 +39,7 @@ public class Service {
             chessBoard[current] = i;
             if (notConflict(chessBoard, current)) {
                 //if no conflict to others, place Queen in next row(current row+1)
-                placqeQueen(chessBoard, current + 1, noOfQueens);
+                placeQueen(chessBoard, current + 1, noOfQueens);
             }
         }
     }
