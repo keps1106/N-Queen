@@ -10,6 +10,7 @@ public class Service {
         int [] chessBoard = new int[noOfQueens];
         //start from board[0]
         placeQueen(chessBoard, 0, noOfQueens);
+
     }
 
     private static boolean notConflict(int[] chessBoard, int currentColumnOfQueen) {
@@ -37,16 +38,19 @@ public class Service {
             chessBoard[current] = i;
             if (notConflict(chessBoard, current)) {
                 //if no conflict to others, place Queen in next row(current row+1)
-                placeQueen(chessBoard, current + 1, noOfQueens);
+                placqeQueen(chessBoard, current + 1, noOfQueens);
             }
         }
     }
 
     private static void displayQueens(int[] board) {
+        System.out.println(counter);
+
         //print board[i] value of Queen
         for (int value : board) {
             System.out.print(value + "\t");
         }
+        System.out.print("\n");
 
         int n = board.length;
         for (int i = 0; i < n; i++) {
@@ -58,6 +62,7 @@ public class Service {
             }
             System.out.print("\n");
         }
+        counter++;
         System.out.print("\n");
     }
 
